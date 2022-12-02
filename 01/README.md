@@ -1,6 +1,6 @@
 # Background
 
-Given a data file, solve the following two scenarios:
+Given a data file of Elves carrying calories, solve the following two scenarios:
 
 **Part 1**
 
