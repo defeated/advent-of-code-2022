@@ -4,8 +4,7 @@ TYPES = ("a".."z").to_a + ("A".."Z").to_a
 
 describe "day 03" do
   before do
-    file = File.dirname(__FILE__) + "/data.txt"
-    @data = File.readlines(file, chomp: true)
+    @data = File.readlines(__dir__ + "/data.txt", chomp: true)
   end
 
   it "calculates the totals of duplicate items in each rucksack" do

@@ -41,8 +41,7 @@ CODES = {
 
 describe "day 02" do
   before do
-    file = File.dirname(__FILE__) + "/data.txt"
-    @data = File.readlines(file, chomp: true).map!(&:split)
+    @data = File.readlines(__dir__ + "/data.txt", chomp: true).map!(&:split)
   end
 
   it "calculates my total score by playing the specified shape" do

@@ -4,8 +4,7 @@ require "csv"
 describe "day 01" do
   before do
     row_sep = "---"
-    file = File.dirname(__FILE__) + "/data.txt"
-    data = File.read(file).chomp.gsub("\n\n", row_sep).gsub("\n", ",")
+    data = File.read(__dir__ + "/data.txt").chomp.gsub("\n\n", row_sep).gsub("\n", ",")
     table = CSV.parse data, row_sep: row_sep, converters: :numeric
     @totals = table.map(&:sum)
   end
