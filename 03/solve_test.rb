@@ -1,10 +1,11 @@
-require "minitest/autorun"
+require_relative "../test_helper"
 
 TYPES = ("a".."z").to_a + ("A".."Z").to_a
 
 describe "day 03" do
   before do
-    @data = File.readlines("data.txt", chomp: true)
+    file = File.dirname(__FILE__) + "/data.txt"
+    @data = File.readlines(file, chomp: true)
   end
 
   it "calculates the totals of duplicate items in each rucksack" do
@@ -12,10 +13,10 @@ describe "day 03" do
       half = line.size / 2
       line[...half].chars.intersection(line[half..].chars)
     end
-    pp "duplicates: ", duplicates
+    # pp "duplicates: ", duplicates
 
     priorities = duplicates.map { |char| TYPES.index(char) + 1 }
-    pp "priorities: ", priorities
+    # pp "priorities: ", priorities
 
     total = priorities.sum
     puts "total: #{total}"
@@ -25,15 +26,15 @@ describe "day 03" do
 
   it "calculates the totals of badges in a team rucksack" do
     teams = @data.each_slice(3).to_a
-    pp "teams: ", teams
+    # pp "teams: ", teams
 
     duplicates = teams.flat_map do |team|
       team.map!(&:chars).shift.intersection(*team)
     end
-    pp "duplicates: ", duplicates
+    # pp "duplicates: ", duplicates
 
     priorities = duplicates.map { |char| TYPES.index(char) + 1 }
-    pp "priorities: ", priorities
+    # pp "priorities: ", priorities
 
     total = priorities.sum
     puts "total: #{total}"

@@ -1,5 +1,5 @@
-require "minitest/autorun"
 require "matrix"
+require_relative "../test_helper"
 
 #
 #                             PLAYER 2 (elf)
@@ -41,7 +41,8 @@ CODES = {
 
 describe "day 02" do
   before do
-    @data = File.readlines("data.txt", chomp: true).map!(&:split)
+    file = File.dirname(__FILE__) + "/data.txt"
+    @data = File.readlines(file, chomp: true).map!(&:split)
   end
 
   it "calculates my total score by playing the specified shape" do
