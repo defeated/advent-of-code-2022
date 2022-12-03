@@ -21,9 +21,9 @@ various outcomes (win/loss/draw)
 
 |||<br>rock|player2 (elf)<br>paper|<br>scissors|
 |---|---|:---:|:---:|:---:|
-||rock|draw|loss|win|
-|player1 (me)|paper|win|draw|loss|
-||scissors|loss|win|draw|
+||rock|`draw`|`loss`|`win`|
+|**player1 (me)**|paper|`win`|`draw`|`loss`|
+||scissors|`loss`|`win`|`draw`|
 
 
 ```
