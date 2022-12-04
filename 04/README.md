@@ -9,11 +9,12 @@ solve the following two scenarios:
 
 **Part 2**
 
-> ...
+> In how many assignment pairs do the ranges overlap?
 
 # Solution
 
-This ...
+This involves more fun with `Array` and `Range`! `intersection` is back, and
+brought their friend `difference`.
 
 ```
 # minitest
