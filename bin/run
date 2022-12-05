@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+exec docker run --rm --interactive --tty \
+  --workdir /app \
+  --volume $(pwd):/app \
+  --volume data_gems:/usr/local/bundle \
+  --env "RUBYOPT=--enable-frozen-string-literal --enable-yjit" \
+  --env "BUNDLE_JOBS=1" \
+  ruby:3.2.0-preview3-alpine3.17 \
+  "$@"

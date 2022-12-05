@@ -1,8 +1,8 @@
-require "minitest/test_task"
+require "rake/testtask"
 
-Minitest::TestTask.create(:test) do |t|
+Rake::TestTask.new(:test) do |t|
   t.libs << "./"
-  t.test_globs = ["**/*_test.rb"]
+  t.test_files = ["**/*_test.rb"]
 end
 
 task default: :test

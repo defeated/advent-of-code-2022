@@ -1,4 +1,3 @@
-require "matrix"
 require_relative "../test_helper"
 
 #

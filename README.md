@@ -3,14 +3,14 @@
 All days:
 
 ```
-rake
+./bin/run rake
 ```
 
 Individual days:
 
 ```
-ruby 01/solve_test.rb --verbose
-ruby 02/solve_test.rb --verbose
-ruby 03/solve_test.rb --verbose
+./bin/run ruby 01/solve_test.rb --verbose
+./bin/run ruby 02/solve_test.rb --verbose
+./bin/run ruby 03/solve_test.rb --verbose
 ...
 ```
