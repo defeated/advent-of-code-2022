@@ -13,7 +13,9 @@ scenarios:
 
 # Solution
 
-This ...
+This is an exercise in enumerables. Didn't love this solution but it worked.
+It breaks down the string into chunks and compares uniqueness within each
+chunk.
 
 ```
 # minitest
