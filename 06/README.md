@@ -9,7 +9,7 @@ scenarios:
 
 **Part 2**
 
-> ...
+> How many characters need to be processed before the first start-of-message marker is detected?
 
 # Solution
 
