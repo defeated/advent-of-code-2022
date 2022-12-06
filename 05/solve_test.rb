@@ -16,20 +16,21 @@ describe "day 05" do
     data.pop                # remove the crate footer row
 
     @crates = data.transpose.map(&:compact) # magic
+
     @steps = bottom.split("\n").map do |line|
-      line.match(/move (?<amount>\d+) from (?<source>\d+) to (?<destination>\d+)/)
+      line.
+        match(/move (?<move>\d+) from (?<from>\d+) to (?<to>\d+)/).
+        named_captures.
+        transform_keys(&:to_sym).
+        transform_values(&:to_i)
     end
   end
 
-  it "moves crates one at a time to different columns per the instructions" do
+  it "moves one crates at a time to different columns per the instructions" do
     @steps.each do |step|
-      amount = step[:amount].to_i
-      source = step[:source].to_i - 1
-      destination = step[:destination].to_i - 1
-
-      amount.times do
-        taken = @crates[source].shift
-        @crates[destination].unshift *taken
+      step[:move].times do
+        taken = @crates[step[:from] - 1].shift
+        @crates[step[:to] - 1].unshift *taken
       end
     end
 
@@ -39,8 +40,15 @@ describe "day 05" do
     expect(tops).must_equal "FCVRLMVQP"
   end
 
-  it "..." do
-    skip
-    expect(1).must_equal 0
+  it "moves many crates at a time to different columns per the instructions" do
+    @steps.each do |step|
+      taken = @crates[step[:from] - 1].shift(step[:move])
+      @crates[step[:to] - 1].unshift *taken
+    end
+
+    tops = @crates.map(&:first).join
+    puts "tops: #{tops}"
+
+    expect(tops).must_equal "RWLWGJGFD"
   end
 end
