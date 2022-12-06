@@ -7,10 +7,7 @@ describe "day 06" do
 
   it "finds the start-of-marker in a data stream" do
     frame = 4
-
-    marker = @data.each_cons(frame).find_index do |window|
-      window.size == window.uniq.size
-    end
+    marker = @data.each_cons(frame).map(&:uniq).map(&:size).find_index(frame)
 
     start = marker + frame
     puts "start: #{start}"
@@ -20,10 +17,7 @@ describe "day 06" do
 
   it "finds the start-of-message in a data stream" do
     frame = 14
-
-    message = @data.each_cons(frame).find_index do |window|
-      window.size == window.uniq.size
-    end
+    message = @data.each_cons(frame).map(&:uniq).map(&:size).find_index(frame)
 
     start = message + frame
     puts "start: #{start}"
