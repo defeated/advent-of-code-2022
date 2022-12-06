@@ -16,21 +16,16 @@ describe "day 05" do
     data.pop                # remove the crate footer row
 
     @crates = data.transpose.map(&:compact) # magic
-
     @steps = bottom.split("\n").map do |line|
-      line.
-        match(/move (?<move>\d+) from (?<from>\d+) to (?<to>\d+)/).
-        named_captures.
-        transform_keys(&:to_sym).
-        transform_values(&:to_i)
+      line.match(/move (\d+) from (\d+) to (\d+)/).captures.map(&:to_i)
     end
   end
 
   it "moves one crates at a time to different columns per the instructions" do
-    @steps.each do |step|
-      step[:move].times do
-        taken = @crates[step[:from] - 1].shift
-        @crates[step[:to] - 1].unshift *taken
+    @steps.each do |(move, from, to)|
+      move.times do
+        taken = @crates[from - 1].shift
+        @crates[to - 1].unshift *taken
       end
     end
 
@@ -41,9 +36,9 @@ describe "day 05" do
   end
 
   it "moves many crates at a time to different columns per the instructions" do
-    @steps.each do |step|
-      taken = @crates[step[:from] - 1].shift(step[:move])
-      @crates[step[:to] - 1].unshift *taken
+    @steps.each do |(move, from, to)|
+      taken = @crates[from - 1].shift(move)
+      @crates[to - 1].unshift *taken
     end
 
     tops = @crates.map(&:first).join
