@@ -2,34 +2,30 @@ require_relative "../test_helper"
 
 describe "day 06" do
   before do
-    @data = File.read(__dir__ + "/data.txt").chomp
+    @data = File.read(__dir__ + "/data.txt").chomp.chars
   end
 
   it "finds the start-of-marker in a data stream" do
-    skip
+    frame = 4
 
-    frame = 3
-    marker = @data.chars.each_with_index.find do |l, i|
-      finish = i + frame
-      window = l + @data[i + 1..finish]
-      window.chars.size == window.chars.uniq.size
+    marker = @data.each_cons(frame).find_index do |window|
+      window.size == window.uniq.size
     end
 
-    start = marker.last + frame + 1
+    start = marker + frame
     puts "start: #{start}"
 
     expect(start).must_equal 1300
   end
 
   it "finds the start-of-message in a data stream" do
-    frame = 13
-    message = @data.chars.each_with_index.find do |l, i|
-      finish = i + frame
-      window = l + @data[i + 1..finish]
-      window.chars.size == window.chars.uniq.size
+    frame = 14
+
+    message = @data.each_cons(frame).find_index do |window|
+      window.size == window.uniq.size
     end
 
-    start = message.last + frame + 1
+    start = message + frame
     puts "start: #{start}"
 
     expect(start).must_equal 3986
