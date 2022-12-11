@@ -10,7 +10,7 @@ two scenarios:
 
 **Part 2**
 
-> ...
+> Find the smallest directory that, if deleted, would free up enough space on the filesystem to run the update. What is the total size of that directory?
 
 # Solution
 

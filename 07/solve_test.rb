@@ -33,8 +33,16 @@ describe "day 07" do
     expect(total).must_equal 1491614
   end
 
-  # it "..." do
-  #   skip
-  #   expect(0).must_equal 0
-  # end
+  it "finds the size of the smallest directory that can be deleted" do
+    sizes = @tree.values
+    used = sizes.first
+    available = 70_000_000
+    needed = 30_000_000
+    free = available - used
+
+    del = sizes.select { |size| free + size >= needed }.min
+    puts "del: #{del}"
+
+    expect(del).must_equal 6400111
+  end
 end
