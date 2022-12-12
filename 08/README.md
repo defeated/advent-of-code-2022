@@ -9,7 +9,7 @@ scenarios:
 
 **Part 2**
 
-> ...
+> What is the highest scenic score possible for any tree?
 
 # Solution
 
